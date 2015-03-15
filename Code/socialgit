@@ -12,7 +12,7 @@
 #si los obtengo entonces llamo a python para que haga
 #su trabajo sucio...
 
-echo "Probando getopt"
+#echo "Probando getopt"
 
 push_flag=false
 
