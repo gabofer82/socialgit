@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#muestra el directorio actual
+#echo "La ruta actual es: `pwd`"
+
+#muestra los archivos hallados
+#echo "Esta carpeta contiene los siguientes archivos y carpetas: `ls`"
+
+echo "Estos son los parametros que se pasaron: $*"
