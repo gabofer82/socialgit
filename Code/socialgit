@@ -15,22 +15,39 @@
 #echo "Probando getopt"
 
 push_flag=false
+sgit_flag=false
+sgit_command=""
 
 for i
 do
     if [ "$i" = "push" ]; then
         echo "-->$i"
         push_flag=true
+    elif [ "$i" = "addaccount" ]; then
+        #echo "-->$i"
+        # aca van comandos de sgit que no son de git
+        sgit_command="$i"
+        sgit_flag=true
+        # aca debo llamar al instalador con un flag para saltar
+        # el first time y no resetear la instalacion.
+    else
+        # Cuando no es ni push ni sgit_command entonces todo sigue igual
+        $sgit_flag=false
     fi
 done 
 
-git_output=$( git $* )
-
+if [ $sgit_flag = false ]; then
+    git_output=$( git $* )
+else
+    echo "sgit_command --> $sgit_command"
+    echo "$sgit_command"
+fi
 
 if [ $push_flag = true ]; then
     ./SocialGit/social.py
     echo "!!!!!!!!!!!!!!"
 else
-    echo "$git_output"
+    echo "no push"
+    #echo "$git_output"
 fi    
 
